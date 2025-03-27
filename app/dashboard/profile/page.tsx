@@ -23,7 +23,7 @@ export default function ProfilePage() {
             <div className="flex flex-col items-center space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0">
               <Avatar className="h-24 w-24">
                 <AvatarImage src="/placeholder.svg?height=96&width=96" alt="Profile" />
-                <AvatarFallback>JD</AvatarFallback>
+                <AvatarFallback>AF</AvatarFallback>
               </Avatar>
               <div className="flex flex-col space-y-2">
                 <Button variant="outline" size="sm">
@@ -36,7 +36,7 @@ export default function ProfilePage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="display-name">Display Name</Label>
-              <Input id="display-name" defaultValue="John Doe" />
+              <Input id="display-name" defaultValue="ANTON FERNANDO" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="job-title">Job Title</Label>

@@ -4,9 +4,9 @@ const activities = [
   {
     id: 1,
     user: {
-      name: "John Doe",
+      name: "ANTON FERNANDO",
       avatar: "/placeholder.svg?height=32&width=32",
-      initials: "JD",
+      initials: "AJ",
     },
     action: "signed in",
     time: "2 minutes ago",

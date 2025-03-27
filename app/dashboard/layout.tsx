@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { usePathname } from "next/navigation"
+//import { usePathname } from "next/navigation"
 import { SidebarProvider } from "@/components/dashboard/sidebar-provider"
 import { DashboardSidebar } from "@/components/dashboard/sidebar"
 import { DashboardHeader } from "@/components/dashboard/header"
@@ -14,7 +14,7 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   const [isMounted, setIsMounted] = useState(false)
-  const pathname = usePathname()
+  //const pathname = usePathname()
 
   useEffect(() => {
     setIsMounted(true)
