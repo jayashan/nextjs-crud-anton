@@ -6,7 +6,7 @@ import { useSidebar } from "./sidebar-provider"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { BarChart3, Home, Settings, User, Menu, X } from "lucide-react"
+import { BarChart3, Home, Settings, User, Menu, X , ArchiveRestore} from "lucide-react"
 
 const navItems = [
   {
@@ -29,7 +29,14 @@ const navItems = [
     href: "/dashboard/settings",
     icon: Settings,
   },
+  {
+    title: "Products",
+    href: "/dashboard/products",
+    icon:  ArchiveRestore,
+  },
+  
 ]
+
 
 export function DashboardSidebar() {
   const { isOpen, toggle, isMobile } = useSidebar()
