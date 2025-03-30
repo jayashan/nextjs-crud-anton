@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
+
 export async function GET(){
     try{
         const products=await prisma.product.findMany({
@@ -13,6 +14,9 @@ export async function GET(){
         return NextResponse.json({message:'Error Occured....!'},{status:500});
     }
 }
+
+
+
 
 export async function POST(req:Request){
     const{code,name,category,price,stock}=await req.json();

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Pencil, Trash2, Check, X, MoreHorizontal ,Loader2} from "lucide-react"
+import { Pencil, Trash2, Check, X, MoreHorizontal ,Loader2,Search} from "lucide-react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -46,13 +46,20 @@ export default function ViewProducts() {
   const[productToDelete,setProductToDelete]=useState<number|null>(null);
   const[loading,setLoading]=useState(true)
   const[error,setError]=useState<string|null>(null)
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(()=>{
     fetchRecords();
   },[])
   
  
-
+  const filterProducts=products.filter((item)=>{
+    const searchValue=searchTerm.toLowerCase();
+    return(
+      item.code.toLocaleLowerCase().includes(searchValue)||
+      item.name.toLocaleLowerCase().includes(searchValue)
+    )
+  })
 
   const fetchRecords=async()=>{
     setLoading(true)
@@ -196,6 +203,16 @@ export default function ViewProducts() {
         <h1 className="text-3xl font-bold tracking-tight">Product Management</h1>
         <p className="text-muted-foreground">View all the product details</p>
       </div>
+      <div className="relative">
+          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input
+            type="search"
+            placeholder="Search by Product code or by Product Name"
+            className="pl-8"
+            value={searchTerm}
+            onChange={(e)=>setSearchTerm(e.target.value)}
+          />
+      </div>
       <div className="rounded-md border w-full max-w-3xl mx-auto">
         <Table>
           <TableHeader>
@@ -209,7 +226,8 @@ export default function ViewProducts() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products.map((product)=>(
+            {filterProducts.length > 0 ? (
+              filterProducts.map((product)=>(
               <TableRow key={product.id}>
                 <TableCell>{product.code}</TableCell>
                 <TableCell>
@@ -291,8 +309,15 @@ export default function ViewProducts() {
                     )}
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
+              ))
+            ):(
+              <TableRow>
+                <TableCell colSpan={4} className="h-24 text-center">
+                  No results found.
+                </TableCell>
+              </TableRow>
+            )}
+            </TableBody>
         </Table>
       </div>
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
