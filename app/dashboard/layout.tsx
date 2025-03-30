@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 import { SidebarProvider } from "@/components/dashboard/sidebar-provider"
 import { DashboardSidebar } from "@/components/dashboard/sidebar"
 import { DashboardHeader } from "@/components/dashboard/header"
+import { Toaster } from "@/components/ui/sonner"
 
 export default function DashboardLayout({
   children,
@@ -31,6 +32,7 @@ export default function DashboardLayout({
         <div className="flex flex-1">
           <DashboardSidebar />
           <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">{children}</main>
+          <Toaster />
         </div>
       </div>
     </SidebarProvider>

@@ -94,11 +94,36 @@ export default function ViewProducts() {
     
   }
   //save values
-  const handleSave=()=>{
+  const handleSave=async ()=>{
     if(editValues){
-      setProducts(products.map((p)=>(p.id===editingId?editValues:p)))
-      setEditingId(null)
-      setEditValues(null)
+      // setProducts(products.map((p)=>(p.id===editingId?editValues:p)))
+      // setEditingId(null)
+      // setEditValues(null)
+
+      try{
+        const response=await fetch(`/api/product/${editingId}`,{
+          method:'PUT',
+          headers:{
+            'Content-Type':'application/json',
+          },
+          body:JSON.stringify({
+            name:editValues.name,
+            category:editValues.category,
+            price:(editValues.price).toString(),
+            stock:Number(editValues.stock)
+          }),
+        });
+        if(!response.ok){
+          throw new Error('Failed to update the record');
+        }
+        setProducts(products.map((p)=>(p.id===editingId?editValues:p)))
+        setEditingId(null);
+        setEditValues(null);
+        toast.success('Record updated successfully');
+
+      }catch{
+        toast.error('Failed to update the record. Please try again later');
+      }
     }
   }
   //handleCancel
@@ -120,11 +145,27 @@ export default function ViewProducts() {
     setDeleteDialogOpen(true);
   }
 
-  const handleDelete=()=>{
+  const handleDelete=async()=>{
     if(productToDelete !==null){
-      setProducts(products.filter((p)=>p.id !==productToDelete))
-      setDeleteDialogOpen(false)
-      setProductToDelete(null)
+      // setProducts(products.filter((p)=>p.id !==productToDelete))
+      // setDeleteDialogOpen(false)
+      // setProductToDelete(null)
+
+      try{
+        const response=await fetch(`/api/product/${productToDelete}`,{
+          method:'DELETE',
+        })
+        if(!response.ok){
+          throw new Error('Failed to delete the record');
+        }
+        setProducts(products.filter((p)=>p.id!==productToDelete))
+        setDeleteDialogOpen(false);
+        setProductToDelete(null);
+        toast.success('Record deleted successfully');
+
+      }catch{
+        toast.error('Failed to delete the record, please try again later');
+      }
     }
   }
 

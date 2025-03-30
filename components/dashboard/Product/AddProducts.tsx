@@ -70,6 +70,10 @@ export default function AddProductForm(){
         }
     }
 
+    function handleClearForm(){
+        form.reset();
+    }
+
 
 
 
@@ -193,7 +197,7 @@ export default function AddProductForm(){
                                     </div>
                                     </CardContent>
                                     <CardFooter className="flex justify-between border-t p-6">
-                                        <Button variant="outline" type="button">
+                                        <Button variant="outline" type="button" onClick={handleClearForm}>
                                             Cancel
                                         </Button>
                                         <SubmitButton/>

@@ -5,7 +5,7 @@ const activities = [
     id: 1,
     user: {
       name: "ANTON FERNANDO",
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "https://github.com/shadcn.png",
       initials: "AJ",
     },
     action: "signed in",
@@ -15,7 +15,7 @@ const activities = [
     id: 2,
     user: {
       name: "Jane Smith",
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "https://github.com/shadcn.png",
       initials: "JS",
     },
     action: "updated their profile",
@@ -25,7 +25,7 @@ const activities = [
     id: 3,
     user: {
       name: "Robert Johnson",
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "https://github.com/shadcn.png",
       initials: "RJ",
     },
     action: "created a new project",
@@ -35,7 +35,7 @@ const activities = [
     id: 4,
     user: {
       name: "Emily Davis",
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "https://github.com/shadcn.png",
       initials: "ED",
     },
     action: "completed a task",
@@ -45,7 +45,7 @@ const activities = [
     id: 5,
     user: {
       name: "Michael Wilson",
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "https://github.com/shadcn.png",
       initials: "MW",
     },
     action: "added a new comment",
