@@ -203,7 +203,7 @@ export default function ViewProducts() {
         <h1 className="text-3xl font-bold tracking-tight">Product Management</h1>
         <p className="text-muted-foreground">View all the product details</p>
       </div>
-      <div className="relative">
+      <div className="relative w-full max-w-3xl mx-auto">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             type="search"
